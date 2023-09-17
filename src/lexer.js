@@ -5,7 +5,9 @@ const tokenType = Object.freeze({
 	"k":3,
 	"l":4,
 	".":5,
-	"o":6
+	"o":6,
+	"v":7,
+	"i":8,
 });
 
 const opertatorType = Object.freeze({
@@ -20,24 +22,13 @@ class Token{
 		this.tokenStr = tokenStr;
 		this.tokenType = Token.getTokenType(tokenStr);
 		this.pos = lexer.currPos;
-		if(this.tokenType == null){
-			console.error(`Invalid token ${tokenStr} received`);
-		}
 	}
 	static getTokenType(tokenStr){
-		if(tokenType[tokenStr]!=null)
+		if(tokenType[tokenStr]!=null && tokenStr!="o")
 			return tokenType[tokenStr];
-		switch(tokenStr){
-			case "+":
-			case "-":
-			case "&":
-			case "|":
-			case "*":
-			case "=":
-				return tokenType['o'];
-			default:
-				return null;
-		}
+		if(opertatorType[tokenStr]!=null)
+			return tokenType["o"];
+		return tokenType["i"];
 	}
 }
 
@@ -47,16 +38,15 @@ class Lexer{
 	}
 	tokenize(program){
 		this.tokenList = [];
-		let i=0;
-		while(i<program.length){
-			let c = program[i];
+		while(this.currPos<program.length){
+			const c = program[this.currPos];
 			if(!(c==" " || c==" " ||c=="\t" ||c=="\r" ||c=="\n"))
 				this.tokenList.push(new Token(c));
-			i++;
+			this.currPos++;
 		}
 		return this.tokenList;
 	}
 }
-let lexer = new Lexer()
-let tokenList = lexer.tokenize("hjlkjlkjhljljklj.=.=.=.");
-console.log([...tokenList])
+const lexer = new Lexer();
+const tokenList = lexer.tokenize("hlkjlkljkljkjlkjlkjklj+vjlkjlkjkljvlkjlkjlk");
+console.log([...tokenList]);
