@@ -1,5 +1,5 @@
 
-const tokenType = Object.freeze({
+export const tokenType = Object.freeze({
 	"h":1,
 	"j":2,
 	"k":3,
@@ -10,15 +10,15 @@ const tokenType = Object.freeze({
 	"i":8,
 });
 
-const opertatorType = Object.freeze({
+export const opertatorType = Object.freeze({
 	"+":0,
 	"&":1,
 	"|":2,
 	"=":3,
 	"-":4
 })
-class Token{
-	constructor(tokenStr){
+export class Token{
+	constructor(tokenStr,lexer){
 		this.tokenStr = tokenStr;
 		this.tokenType = Token.getTokenType(tokenStr);
 		this.pos = lexer.currPos;
@@ -32,7 +32,7 @@ class Token{
 	}
 }
 
-class Lexer{
+export class Lexer{
 	constructor(){
 		this.currPos = 0;
 	}
@@ -41,12 +41,9 @@ class Lexer{
 		while(this.currPos<program.length){
 			const c = program[this.currPos];
 			if(!(c==" " || c==" " ||c=="\t" ||c=="\r" ||c=="\n"))
-				this.tokenList.push(new Token(c));
+				this.tokenList.push(new Token(c,this));
 			this.currPos++;
 		}
 		return this.tokenList;
 	}
 }
-const lexer = new Lexer();
-const tokenList = lexer.tokenize("hlkjlkljkljkjlkjlkjklj+vjlkjlkjkljvlkjlkjlk");
-console.log([...tokenList]);
