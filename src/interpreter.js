@@ -1,6 +1,6 @@
 import * as lexer from "./lexer.js"
 
-const env = {
+export const env = {
 	store : [0,0,0,0,0,0,0,0],
 	ptr : 0,
 	opr:null,
@@ -25,10 +25,16 @@ const env = {
 				` VBstart : ${env.visualBlockStart} atVBend : ${env.atVisualEnd}\n`
 			);
 		}
+	},
+	inlet:{
+		input(input){
+			const elexer = new lexer.Lexer();
+			const interpreter = new Interpreter(elexer.tokenize(input),true)
+			interpreter.run();
+		}
 	}
 }
-
-class Interpreter {
+export class Interpreter {
 	constructor(tokenList,deubgMode){
 		this.tokenList = tokenList;
 		this.currIdx = 0;
@@ -207,6 +213,4 @@ class Interpreter {
 	}
 }
 
-const elexer = new lexer.Lexer();
-const interpreter = new Interpreter(elexer.tokenize("lklklklklkvhhhhjkjkjlv.+h"),true)
-interpreter.run();
+env.inlet.input();
