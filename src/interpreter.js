@@ -92,7 +92,7 @@ export class Interpreter {
 		}
 	}
 	moveRight(){
-		if(env.ptr<env.store.length)
+		if(env.ptr<env.store.length-1)
 			env.ptr++;
 		if(env.opr && !env.isInVisualBlock)
 		{
@@ -166,7 +166,7 @@ export class Interpreter {
 				start = env.ptr;
 				end = env.visualBlockStart;
 			}
-			while(start<end){
+			while(start <= end){
 				env.visualBlock = env.visualBlock*2+env.store[start++];
 			}
 			env.isInVisualBlock = false;
