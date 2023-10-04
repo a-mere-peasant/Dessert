@@ -126,6 +126,8 @@ export class Interpreter {
 			env.oprL = env.visualBlock;
 			env.visualBlock = 0;
 			env.atVisualEnd = false;
+		}else{
+			env.oprL = env.store[env.ptr];
 		}
 
 	}
