@@ -159,6 +159,7 @@ export class Interpreter {
 	}
 	visualBlock(){
 		if(!env.isInVisualBlock){
+			env.visualBlock = 0;
 			env.visualBlockStart = env.ptr;
 			env.isInVisualBlock = true;
 		}else{
