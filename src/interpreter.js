@@ -146,6 +146,12 @@ export class Interpreter {
 			case "-":
 				this.sub();
 				break;
+			case "*":
+				this.mul();
+				break;
+			case "/":
+				this.div();
+				break;
 			case "=":
 				this.equal();
 				break;
@@ -183,30 +189,37 @@ export class Interpreter {
 	}
 	add(){
 		env.outlet.print(env.oprL+env.oprR);
-		env.oprL = null;
-		env.oprR = null;
-		env.opr = null;
+		this.resetop();
 	}
 	sub(){
 		env.outlet.print(env.oprL-env.oprR);
-		env.oprL = null;
-		env.oprR = null;
-		env.opr = null;
+		this.resetop();
+	}
+	mul(){
+		env.outlet.print(env.oprL*env.oprR);
+		this.resetop();
+	}
+	div(){
+		if(env.oprR ==0) {
+			env.outlet.error("Cannot divide by 0");
+			return;
+		}
+		env.outlet.print(env.oprL/env.oprR);
+		this.resetop();
 	}
 	equal(){
 		env.outlet.print(env.oprL==env.oprR);
-		env.oprL = null;
-		env.oprR = null;
-		env.opr = null;
+		this.resetop();
 	}
 	and(){
 		env.outlet.print(env.oprL&env.oprR);
-		env.oprL = null;
-		env.oprR = null;
-		env.opr = null;
+		this.resetop();
 	}
 	or(){
 		env.outlet.print(env.oprL|env.oprR);
+		this.resetop();
+	}
+	resetop(){
 		env.oprL = null;
 		env.oprR = null;
 		env.opr = null;

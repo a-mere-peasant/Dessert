@@ -15,7 +15,9 @@ export const opertatorType = Object.freeze({
 	"&":1,
 	"|":2,
 	"=":3,
-	"-":4
+	"-":4,
+	"*":5,
+	"/":6,
 })
 export class Token{
 	constructor(tokenStr,lexer){
