@@ -2,7 +2,7 @@
 # Dessert
 
 
-Dessert is a byte sized vimly typed language. It can get you anywhere (within 8 bits). It can be fit anywhere in your stack as there's always room for dessert!
+Dessert is a byte sized vimly typed language. It can get you anywhere (within 8 bits). It can fit anywhere in your stack as there's always room for dessert!
 
 Dessert works on a store of size 1 byte (8 bits), using vim-like motion commands to move the pointer (which initially sits at the 0th bit) in the store and operate on the bits. It has a no lookahead type interpretation as it simply does not care what you're typing next. There are no types to worry about .All of it's commands are single characters which conform to the spirit of this language.
 
