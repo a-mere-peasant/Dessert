@@ -1,0 +1,324 @@
+html{
+	height:100%;
+	width:100%;
+	margin:0px;
+}
+pre {
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap: break-word;
+}
+a {
+	color: white;
+	line-height: inherit;
+	text-decoration: none;
+}
+section{
+	min-height:100vh;
+	width:100%;
+	display:grid;
+	place-items:center;
+	align-content:center;
+}
+.hidden{
+	opacity:0;
+	transition:3s ease;
+}
+.shown{
+	opacity:1
+}
+.shadow-bg{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	animation: shadow-reveal 2s ease;
+	-webkit-animation: shadow-reveal 2s ease;
+	-moz-animation: shadow-reveal 2s ease;
+}
+#interpreter{
+	display: flex;
+	margin-top: 5rem;
+	width: 70%;
+	height:50vh;
+}
+#env{
+	width: 50%;
+	display: grid;
+	grid-template-rows: repeat(3,1fr);
+	grid-template-columns: repeat(2,1fr);
+	font-size: 1.7rem;
+	background: black;
+	font-family: mono;
+	padding: 2rem;
+}
+#env-store{
+	grid-column: 1/span3;
+	font-size: 3rem;
+	text-align: left;
+	margin-bottom: 2rem;
+	white-space: pre-wrap;
+}
+#env-VB{
+	grid-column: 2/span2;
+}
+#console{
+	height: 100%;
+	width: 100%;
+	overflow: scroll;
+	background:#0f0f0f;
+}
+#prg-input-console{
+	width: 50%;
+	height: 100%;
+}
+#program-input{
+	height: 2rem;
+	width: 100%;
+	background: #1e1e1e;
+	border-style: none;
+	margin: 0;
+	color: white;
+}
+.warning {
+	color: #f7ac42;
+	opacity: 0.9;
+	text-align: center;
+}
+.error{
+	color:#f94141;
+}
+.active{
+	color:white;
+}
+.inactive{
+	color:#7e7e7e;
+}
+.nliner{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 2rem;
+	flex-direction: column;
+	position: absolute;
+	top: 30rem;
+	width: 50%;
+	word-break: break-word;
+	text-align: center;
+}
+.card-active{
+	background: #fff !important;
+color: black;}
+.navigation{
+	font-size:2.7rem;
+	margin-top: 0px;
+	display:flex;
+	justify-content:space-evenly;
+	align-items: center;
+}
+.navigation > a{
+	color:transparent;
+	text-decoration:none;
+}
+
+.home-card{
+	position: relative;
+	top: 40%;
+	z-index: 100;
+	width: 100%;
+}
+.post-index{
+	margin-top: 4rem;
+	display: flex;
+	width: 100%;
+	height: 100%;
+	flex-direction: column;
+	align-items: center;
+}
+.index-lists{
+	position:relative;
+	font-size:1.5rem;
+	width:45%;
+}
+.index-headers{
+	position:relative;
+	text-align:center;
+	width:40%;
+	display: flex;
+	justify-content: space-evenly;
+}
+.post-index-section-header{
+	font-size: 1.5rem;
+	background: transparent;
+	padding: 1rem;
+	border: 1px solid white;
+	border-block-style: solid;
+	border-radius: 0.3rem;
+	font-size:1.5rem;
+}
+.post-index-section-list{
+	padding-left:7rem;
+	margin-top:2rem;
+}
+.post-index-section-list > ul{
+	list-style-type: none;
+	padding: 0; 
+	margin: 0; 
+}
+.post-index-section-list > ul > li{
+	margin-bottom:1rem;
+}
+ul, ol, dl {
+	font-family: inherit;
+	line-height: 1.6;
+	list-style-position: outside;
+}
+h1{
+	color:#fffff1;
+}
+body{
+	background: #0f0f0f;
+	color: #f1e1ee;
+	font-family: Poppins,sans-serif;
+	cursor:auto;
+	font-size:1.2rem;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	height:100%;
+	margin:0px;
+}
+@media(orientation:portrait){
+	.post{
+		width:90%;
+		text-align:justify;
+	}
+	.index-headers{
+		width:70%;
+	}
+	.index-lists{
+		width:90%;
+	}
+	#interpreter{
+		width: 80%;
+		height:70vh;
+		flex-direction:column;
+	}
+	#env{
+		width:unset;
+		height:50%;
+	}
+	#prg-input-console{
+		margin-top: 1rem;
+		width:unset;
+	}
+
+}
+@media(orientation:landscape){
+	.post{
+		width:50%;
+		text-align:justify;
+	}
+	/* yoinked from https://bit.ly/CodePenAccentShard*/
+	body{
+		background-image: radial-gradient( rgba(255, 255, 255, 0.1) 1px, transparent 1px );
+		background-position: 50% 50%;
+		background-size: 1.1rem 1.1rem;
+	}
+}
+code{	
+	background-color: #333;
+	color: #fff;
+	font-family: Consolas,"Liberation Mono",Courier,monospace;
+	font-weight: normal;
+	padding: 0.125rem 0.3125rem 0.0625rem;
+	width: fit-content;
+	display: inline-block;
+}
+pre {
+	background-color: transparent;
+	border: 0;
+	padding: 0;
+}
+a:hover {
+	cursor: pointer;
+}
+.home-img {
+	max-width: 5.7rem;
+	aspect-ratio: 1/1;
+	margin: 1rem;
+}
+footer{
+	bottom:0px;
+	position:fixed;
+	width: 100%;
+	justify-content: center;
+	display: flex;
+}
+#header{
+	width: 100%;
+}
+.gradient-text{
+	background: linear-gradient(155deg, #50f0c6, #50eff0, #c69bf0);
+	background-size: 100% 100%;
+	-webkit-animation: header-gradient 2s ease infinite;
+	-moz-animation: header-gradient 2s ease infinite;
+	animation: header-gradient 2s ease infinite;
+	-webkit-background-clip:text;
+	background-clip:text;
+	color: transparent;
+}
+
+
+@-webkit-keyframes shadow-reveal {
+	0%{background:radial-gradient(transparent 10%,black 90%); z-index:101;}
+	10%{background:radial-gradient(transparent 20%,black 80%); z-index:101;}
+	20%{background:radial-gradient(transparent 30%,black 70%); z-index:101;}
+	60%{background:radial-gradient(transparent 40%,black 60%); z-index:101;}
+	100%{background:unset; opacity:0; z-index:0}
+}
+@-moz-keyframes shadow-reveal {
+	0%{background:radial-gradient(transparent 10%,black 90%); z-index:101;}
+	10%{background:radial-gradient(transparent 20%,black 80%); z-index:101;}
+	20%{background:radial-gradient(transparent 30%,black 70%); z-index:101;}
+	60%{background:radial-gradient(transparent 40%,black 60%); z-index:101;}
+	100%{background:unset; opacity:0;z-index:0}
+}
+@keyframes shadow-reveal {
+	0%{background:radial-gradient(transparent 10%,black 90%); z-index:101;}
+	10%{background:radial-gradient(transparent 20%,black 80%); z-index:101;}
+	20%{background:radial-gradient(transparent 30%,black 70%); z-index:101;}
+	60%{background:radial-gradient(transparent 40%,black 60%); z-index:101;}
+	100%{background:unset; opacity:0;z-index:0}
+}
+@-webkit-keyframes header-gradient {
+	0%{background-position:96% 0%}
+	50%{background-position:5% 100%}
+	100%{background-position:96% 0%}
+}
+@-moz-keyframes header-gradient {
+	0%{background-position:96% 0%}
+	50%{background-position:5% 100%}
+	100%{background-position:96% 0%}
+}
+@keyframes header-gradient {
+	0%{background-position:96% 0%}
+	50%{background-position:5% 100%}
+	100%{background-position:96% 0%}
+}
+
+.text-vert{
+	text-orientation:sideways;
+	writing-mode:vertical-lr;
+}
+.div-soup-ofcourse{
+	display: flex;
+	gap: 1.5rem;
+}
+#div-404{
+	justify-content: center;
+	align-content: center;
+	height:100vh;
+	display: grid;
+}
